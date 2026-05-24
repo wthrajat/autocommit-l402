@@ -4,13 +4,14 @@ This project is an L402-enabled fork of [autocommit-rs](https://github.com/wthra
 
 ![Demo](./public/assets/autocommit-demo.gif)
 
+
 ## L402 pay-per-commit setup
 
 **autocommit-l402** supports a zero-setup, identityless pay-per-commit execution mode using the L402 standard. Instead of using a static API key, you pay microamounts in sats per commit message generated.
 
 ### Cost & Budget Limits
 
-- **10 sats** per commit message (enforced by the proxy gateway).
+- **1 sat** per commit message (default proxy gateway price, capped by a **10 sats** maximum budget limit constraint).
 - **150 sats** Client side budget limit capping total daily spend.
 
 ### Network Architecture
