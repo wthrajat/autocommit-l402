@@ -2,6 +2,8 @@
 
 This project is an L402-enabled fork of [autocommit-rs](https://github.com/wthrajat/autocommit-rs). It generates conventional commit messages using LLMs (OpenAI or Gemini) and supports a pay-per-commit execution mode via the L402 standard and the Aperture gateway.
 
+### 5 minute short [YouTube demo here](https://www.youtube.com/watch?v=JVXlKkl6bGA)
+
 ![Demo](./public/assets/autocommit-demo.gif)
 
 
