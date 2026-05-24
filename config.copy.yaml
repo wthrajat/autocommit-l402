@@ -1,0 +1,12 @@
+# autocommit-rs configuration template
+l402_enabled: true
+
+# Provide LND REST parameters:
+lnd_host: "https://localhost:8080"
+lnd_macaroon: "your_hex_encoded_admin_macaroon"
+
+# Or provide Nostr Wallet Connect connection string:
+# nwc_uri: "nostr+walletconnect://your-public-key?relay=wss://relay.damus.io&secret=your-secret"
+
+# Custom L402 proxy endpoint (defaults to http://localhost:8081/v1/chat/completions)
+l402_proxy: "http://localhost:8081/v1/chat/completions"

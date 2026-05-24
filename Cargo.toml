@@ -1,0 +1,39 @@
+[package]
+name = "autocommit-rs"
+version = "0.1.2"
+edition = "2024"
+description = "Tool that generates conventional commits from staged changes and executes the commit in one go."
+license = "MIT"
+repository = "https://github.com/wthrajat/autocommit-rs"
+homepage = "https://github.com/wthrajat/autocommit-rs"
+documentation = "https://docs.rs/autocommit-rs"
+authors = ["Rajat Khanduri <logsinx@proton.me> (https://wthrajat.com)"]
+keywords = ["git", "commit", "conventional-commits", "cli", "automation"]
+categories = ["command-line-utilities", "development-tools"]
+
+[[bin]]
+name = "autocommit"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+async-trait = "0.1"
+clap = { version = "4", features = ["derive"] }
+colored = "3"
+dialoguer = { version = "0.11", features = ["password"] }
+dotenvy = "0.15"
+indicatif = "0.17"
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+tempfile = "3"
+tokio = { version = "1", features = ["full"] }
+
+l402-core = { git = "https://github.com/lightninglabs/L402sdk" }
+l402-proto = { git = "https://github.com/lightninglabs/L402sdk" }
+l402-mock = { git = "https://github.com/lightninglabs/L402sdk" }
+l402-sqlite = { git = "https://github.com/lightninglabs/L402sdk" }
+l402-nwc = { git = "https://github.com/lightninglabs/L402sdk" }
+l402-lnd = { git = "https://github.com/lightninglabs/L402sdk", features = ["grpc", "rest"] }
+

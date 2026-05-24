@@ -1,0 +1,17 @@
+# aperture.yaml configuration
+listenaddr: "0.0.0.0:8081"
+debuglevel: "debug"
+dbbackend: "sqlite"
+sqlite:
+  dbfile: "~/.aperture/aperture.db"
+
+services:
+  - name: "autocommit-llm-gate"
+    hostregexp: '^.*$'
+    pathregexp: '^/v1/chat/completions$'
+    targetaddress: "https://api.openai.com" # Proxies to live upstream model
+    headers:
+      Authorization: "Bearer SECRET_GATEWAY_OPENAI_KEY" # Hidden upstream credential
+    capabilities: "generate_commit"
+    constraints:
+      "max_satoshis_per_call": "10" # Enforces price constraint per call
