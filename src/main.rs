@@ -185,7 +185,10 @@ async fn main() -> Result<()> {
             || args.nwc_uri.is_some()
             || std::env::var("LND_REST_HOST").is_ok()
             || std::env::var("NWC_CONNECTION_URI").is_ok()
-            || yaml_cfg.as_ref().and_then(|y| y.l402_enabled).unwrap_or(false),
+            || yaml_cfg
+                .as_ref()
+                .and_then(|y| y.l402_enabled)
+                .unwrap_or(false),
         lnd_host: args
             .lnd_host
             .clone()

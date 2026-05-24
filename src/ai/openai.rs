@@ -99,21 +99,21 @@ pub async fn generate_commit_message(
         };
 
         let backend = if let Some(nwc_uri) = &l402_config.nwc_uri {
-            let clean_nwc_uri = nwc_uri.trim().replace('\n', "").replace('\r', "");
-            crate::ai::DynamicLnBackend::Nwc(
+            let clean_nwc_uri = nwc_uri.trim().replace(['\n', '\r'], "");
+            crate::ai::DynamicLnBackend::Nwc(Box::new(
                 l402_nwc::NwcBackend::new(&clean_nwc_uri)
                     .await
                     .map_err(|e| anyhow::anyhow!("NWC initialization failed: {}", e))?,
-            )
+            ))
         } else if let Some(lnd_host) = &l402_config.lnd_host {
-            let clean_lnd_host = lnd_host.trim().replace('\n', "").replace('\r', "");
+            let clean_lnd_host = lnd_host.trim().replace(['\n', '\r'], "");
             let macaroon_hex = l402_config
                 .lnd_macaroon
                 .clone()
                 .or_else(|| std::env::var("LND_MACAROON").ok())
                 .or_else(|| std::env::var("LND_MACAROON_HEX").ok())
                 .context("LND_MACAROON or LND_MACAROON_HEX environment variable, or config.yaml lnd_macaroon must be set for LND REST backend")?;
-            let clean_macaroon = macaroon_hex.trim().replace('\n', "").replace('\r', "");
+            let clean_macaroon = macaroon_hex.trim().replace(['\n', '\r'], "");
             crate::ai::DynamicLnBackend::Lnd(
                 l402_lnd::LndRestBackend::new(&clean_lnd_host, &clean_macaroon)
                     .map_err(|e| anyhow::anyhow!("LND REST initialization failed: {}", e))?,

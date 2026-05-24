@@ -56,7 +56,7 @@ pub async fn generate_commit_message(
 
 pub enum DynamicLnBackend {
     Lnd(l402_lnd::LndRestBackend),
-    Nwc(l402_nwc::NwcBackend),
+    Nwc(Box<l402_nwc::NwcBackend>),
 }
 
 use async_trait::async_trait;

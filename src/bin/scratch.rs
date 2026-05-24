@@ -1,4 +1,4 @@
-use reqwest::header::{HeaderMap, HeaderValue, HOST};
+use reqwest::header::{HOST, HeaderMap, HeaderValue};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -7,9 +7,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Probe the proxy with Host: api.openai.com
     let mut headers = HeaderMap::new();
     headers.insert(HOST, HeaderValue::from_static("api.openai.com"));
-    
+
     println!("--- Testing unauthenticated request with Host: api.openai.com ---");
-    let res = client.post("http://localhost:8081/v1/chat/completions")
+    let res = client
+        .post("http://localhost:8081/v1/chat/completions")
         .headers(headers.clone())
         .body(r#"{"model":"gpt-4o-mini","messages":[{"role":"user","content":"ping"}]}"#)
         .send()
@@ -21,7 +22,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Probe the proxy without custom Host header
     println!("--- Testing unauthenticated request WITHOUT custom Host header ---");
-    let res2 = client.post("http://localhost:8081/v1/chat/completions")
+    let res2 = client
+        .post("http://localhost:8081/v1/chat/completions")
         .body(r#"{"model":"gpt-4o-mini","messages":[{"role":"user","content":"ping"}]}"#)
         .send()
         .await?;

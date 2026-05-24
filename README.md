@@ -1,15 +1,12 @@
-# `autocommit-rs`
+# `autocommit-l402` [![crates.io](https://img.shields.io/crates/v/autocommit-rs.svg)](https://crates.io/crates/autocommit-rs) [![CI](https://github.com/wthrajat/autocommit-rs/actions/workflows/ci.yml/badge.svg)](https://github.com/wthrajat/autocommit-rs/actions/workflows/ci.yml)
 
-[![crates.io](https://img.shields.io/crates/v/autocommit-rs.svg)](https://crates.io/crates/autocommit-rs)
-[![CI](https://github.com/wthrajat/autocommit-rs/actions/workflows/ci.yml/badge.svg)](https://github.com/wthrajat/autocommit-rs/actions/workflows/ci.yml)
-
-Generates and publishes [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#specification) from staged changes in one go. Rust port of [@wthrajat/autocommit](https://github.com/wthrajat/autocommit).
+This project is an L402-enabled fork of [autocommit-rs](https://github.com/wthrajat/autocommit-rs). It generates conventional commit messages using LLMs (OpenAI or Gemini) and supports a pay-per-commit execution mode via the L402 standard and the Aperture gateway.
 
 ![Demo](./public/assets/autocommit-demo.gif)
 
-## L402 Pay-per-Commit Setup
+## L402 pay-per-commit setup
 
-`autocommit-rs` supports a zero-setup, identityless pay-per-commit execution mode using the L402 standard. Instead of using a static API key, you pay microamounts in sats per commit message generated.
+**autocommit-l402** supports a zero-setup, identityless pay-per-commit execution mode using the L402 standard. Instead of using a static API key, you pay microamounts in sats per commit message generated.
 
 ### Cost & Budget Limits
 
